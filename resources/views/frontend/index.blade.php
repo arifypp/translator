@@ -12,6 +12,9 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
+        <link href="{{ mix('css/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ mix('css/keyboard.css') }}" rel="stylesheet">
+        <link href="{{ mix('css/style.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -74,20 +77,74 @@
         <section class="card-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-6">
-                        <div class="logo">
-                            <h3><span>CB</span> Translate</h3>
+                    <div class="col-xl-8">
+                        <div class="logo d-inline-block mr-4">
+                            <a href="#"><h3><span>CB</span> Translate</h3></a>
                         </div>
-                        <nav>
+                        <nav class="d-inline-block">
                             <div class="menu-item">
-                                <a href="#"> <i class="fa fa-language"></i> Text</a>
-                                <a href="#">Document</a>
-                                <a href="#">Website</a>
+                                <a href="#"> <i class="bi bi-translate"></i> Text</a>
+                                <a href="#"> <i class="bi bi-file-earmark-text"></i> Document</a>
+                                <a href="#"><i class="bi bi-globe"></i> Website</a>
                             </div>
                         </nav>
                     </div>
-                    <div class="col-xl-">
-                        <h2>Hello Left</h2>
+                    <div class="col-xl-4 text-right justify-content-end justify-align-end">
+                        <div class="avater">
+                            <a href="#">
+                                <i class="bi bi-person"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="translate-box mt-5 pt-5">
+            <div class="container">
+                <div class="row lang-body align-middle">
+                    <div class="col-xl-5 m-0 p-0">
+                        <div class="lang-selector">
+                            <button type="button">English</button>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 m-0 p-0 text-center align-items-center justify-content-center">
+                        <div class="lang-switch">
+                            <a href="#">
+                                <i class="bi bi-arrow-left-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 m-0 p-0">
+                        <div class="lang-selector">
+                            <button type="button">Norway</button>
+                        </div>
+                    </div>
+                    <span class="separtor"></span>
+                    <div class="col-xl-6">
+                        <div class="translate-text">
+                            <textarea name="langContent" id="langContent" cols="15" rows="5" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Start typing or paste content"></textarea>
+                            <span class="remove-icon">
+                                <i class="bi bi-x-lg"></i>
+                            </span>
+                        </div>
+                         <!-- Assets for translate -->
+                        <div class="row my-3">
+                            <div class="col-xl-6">
+                                <div class="speakmic">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Voice Input (Alt+M)" ><i class="bi bi-mic"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 text-right">
+                                <div class="keyboard">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="On-screen keyboard"><i class="bi bi-keyboard"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="translate-result">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,6 +154,8 @@
         <script src="{{ mix('js/manifest.js') }}"></script>
         <script src="{{ mix('js/vendor.js') }}"></script>
         <script src="{{ mix('js/frontend.js') }}"></script>
+        <script src="{{ mix('js/keyboard.min.js') }}"></script>
+        <script src="{{ mix('js/custom.js') }}"></script>
         @stack('after-scripts')
     </body>
 </html>
