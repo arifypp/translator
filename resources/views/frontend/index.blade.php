@@ -74,7 +74,7 @@
         @include('includes.partials.logged-in-as')
         @include('includes.partials.announcements')
 
-        <section class="card-header">
+        <section class="card-header" id="app">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8">
@@ -132,12 +132,13 @@
                         <div class="row my-3">
                             <div class="col-xl-6">
                                 <div class="speakmic">
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Voice Input (Alt+M)" ><i class="bi bi-mic"></i></a>
+                                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Voice Input" ><i class="bi bi-mic"></i></a>
+                                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Voice Stop" style="display:none;"><i class="bi bi-mic-mute"></i></a>
                                 </div>
                             </div>
                             <div class="col-xl-6 text-right">
                                 <div class="keyboard">
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="On-screen keyboard"><i class="bi bi-keyboard"></i></a>
+                                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="On-screen keyboard"><i class="bi bi-keyboard"></i></a>
                                 </div>
                             </div>
                         </div>

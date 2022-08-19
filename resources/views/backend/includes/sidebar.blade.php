@@ -30,6 +30,24 @@
             )
         )
             <li class="c-sidebar-nav-title">@lang('System')</li>
+            
+            <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.lang.*') || Route::is('admin.lang.create.*'), 'c-open c-show') }}">
+                <x-utils.link
+                    href="#"
+                    icon="c-sidebar-nav-icon cil-language"
+                    class="c-sidebar-nav-dropdown-toggle"
+                    :text="__('Manage Language')" />
+                    <ul class="c-sidebar-nav-dropdown-items">
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.lang.create')"
+                                class="c-sidebar-nav-link"
+                                :text="__('Add New')"
+                                :active="activeClass(Route::is('admin.lang.create.*'), 'c-active')" />
+                        </li>
+                    </ul>
+            
+            </li>
 
             <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.auth.user.*') || Route::is('admin.auth.role.*'), 'c-open c-show') }}">
                 <x-utils.link
