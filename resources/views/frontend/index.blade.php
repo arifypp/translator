@@ -103,22 +103,20 @@
         <section class="translate-box mt-5 pt-5">
             <div class="container">
                 <div class="row lang-body align-middle">
-                    <div class="col-xl-5 m-0 p-0">
+                    <div class="col-xl-6 m-0 p-0">
                         <div class="lang-selector">
                             <button type="button">English</button>
                         </div>
                     </div>
-                    <div class="col-xl-2 m-0 p-0 text-center align-items-center justify-content-center">
-                        <div class="lang-switch">
-                            <a href="#">
-                                <i class="bi bi-arrow-left-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-5 m-0 p-0">
+                    <div class="col-xl-6 m-0 p-0">
                         <div class="lang-selector">
                             <button type="button">Norway</button>
                         </div>
+                    </div>
+                    <div class="lang-switch">
+                        <a href="#">
+                            <i class="bi bi-arrow-left-right"></i>
+                        </a>
                     </div>
                     <span class="separtor"></span>
                     <div class="col-xl-6">
@@ -143,8 +141,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-6 bg-light">
+                        <div class="nb-spinner"></div>
+
                         <div class="translate-result">
+                        </div>
+
+                        <div class="copy-div">
+                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Copy Text"><i class="bi bi-files"></i></a>
+                        </div>
+                        <div class="like-sign">
+                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Like Translation"><i class="bi bi-hand-thumbs-up-fill"></i></a>
+                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Disike Translation"><i class="bi bi-hand-thumbs-down-fill"></i></a>
                         </div>
                     </div>
                 </div>
@@ -177,8 +185,21 @@
                     type:'POST',
                     url:"{{ route('frontend.translate') }}",
                     data: {"_token": "{{ csrf_token() }}", "transText": transText},
+                    beforeSend: function(){
+                        $(".nb-spinner").show();
+                    },
+                    complete: function(){
+                        $(".nb-spinner").hide();
+                    },
                     success:function(data){
-                        $('.translate-result').html(data.query.targettext);
+                        if(data.query){
+                            $('.translate-result').html(data.query.targettext);
+                            $('.copy-div a').show();
+                            $('.like-sign').show();
+                        }
+                        else{
+                            $('.translate-result').html("Data Not Found");
+                        }
                     }
                 });
             }
