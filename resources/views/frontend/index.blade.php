@@ -156,6 +156,37 @@
         <script src="{{ mix('js/vendor.js') }}"></script>
         <script src="{{ mix('js/frontend.js') }}"></script>
         <script src="{{ mix('js/keyboard.min.js') }}"></script>
+        <script>
+            // Main part translation
+
+            $(document).ready(function(){
+            
+            $("#langContent").change(function(e){
+            e.preventDefault();
+            
+            $.ajaxSetup({
+                headers: {
+                        "X-CSRFToken": '{{csrf_token()}}'
+                    }
+                });
+
+            var transText = $("#langContent").val()
+
+            if(this.value.length){
+                $.ajax({
+                    type:'POST',
+                    url:"{{ route('frontend.translate') }}",
+                    data: {"_token": "{{ csrf_token() }}", "transText": transText},
+                    success:function(data){
+                        $('.translate-result').html(data.query.targettext);
+                    }
+                });
+            }
+                    
+                }); 
+
+            });
+        </script>
         <script src="{{ mix('js/custom.js') }}"></script>
         @stack('after-scripts')
     </body>

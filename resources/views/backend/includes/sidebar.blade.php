@@ -42,9 +42,42 @@
                             <x-utils.link
                                 :href="route('admin.lang.create')"
                                 class="c-sidebar-nav-link"
-                                :text="__('Add New')"
+                                :text="__('Add New Language')"
                                 :active="activeClass(Route::is('admin.lang.create.*'), 'c-active')" />
                         </li>
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.lang.manage')"
+                                class="c-sidebar-nav-link"
+                                :text="__('Manage Language')"
+                                :active="activeClass(Route::is('admin.lang.manage.*'), 'c-active')" />
+                        </li>
+                    </ul>
+            
+            </li>
+
+            <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.textlang.*'), 'c-open c-show') }}">
+                <x-utils.link
+                    href="#"
+                    icon="c-sidebar-nav-icon cil-puzzle"
+                    class="c-sidebar-nav-dropdown-toggle"
+                    :text="__('Manage Content')" />
+                    <ul class="c-sidebar-nav-dropdown-items">
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.textlang.create')"
+                                class="c-sidebar-nav-link"
+                                :text="__('Add New Content')"
+                                :active="activeClass(Route::is('admin.textlang.create.*'), 'c-active')" />
+                        </li>
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.textlang.manage')"
+                                class="c-sidebar-nav-link"
+                                :text="__('Manage Content')"
+                                :active="activeClass(Route::is('admin.textlang.manage.*'), 'c-active')" />
+                        </li>
+                        
                     </ul>
             
             </li>
