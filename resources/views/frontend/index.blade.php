@@ -144,11 +144,11 @@
                     <div class="col-xl-6 bg-light">
                         <div class="nb-spinner"></div>
 
-                        <div class="translate-result">
+                        <div class="translate-result" id="translate-result" contentEditable="true">
                         </div>
 
                         <div class="copy-div">
-                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Copy Text"><i class="bi bi-files"></i></a>
+                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Copy Text" onclick="copy('translate-result')"><i class="bi bi-files"></i></a>
                         </div>
                         <div class="like-sign">
                             <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Like Translation"><i class="bi bi-hand-thumbs-up-fill"></i></a>
@@ -187,12 +187,16 @@
                     data: {"_token": "{{ csrf_token() }}", "transText": transText},
                     beforeSend: function(){
                         $(".nb-spinner").show();
+                        $(".translate-result").hide();
+                        
                     },
                     complete: function(){
                         $(".nb-spinner").hide();
+                        $(".translate-result").show();
                     },
                     success:function(data){
                         if(data.query){
+                            
                             $('.translate-result').html(data.query.targettext);
                             $('.copy-div a').show();
                             $('.like-sign').show();
@@ -207,6 +211,17 @@
                 }); 
 
             });
+
+            function copy(element_id){
+                var aux = document.createElement("div");
+                aux.setAttribute("contentEditable", true);
+                aux.innerHTML = document.getElementById(element_id).innerHTML;
+                aux.setAttribute("onfocus", "document.execCommand('selectAll',false,null)"); 
+                document.body.appendChild(aux);
+                aux.focus();
+                document.execCommand("copy");
+                document.body.removeChild(aux);
+            }
         </script>
         <script src="{{ mix('js/custom.js') }}"></script>
         @stack('after-scripts')
